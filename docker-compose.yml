@@ -11,5 +11,21 @@ services:
       - './configs:/arma3/configs'
       - './mods:/arma3/mods'
       - './servermods:/arma3/servermods'
-    env_file: .env
+    environment:
+      ARMA_BINARY: "${ARMA_BINARY}"
+      ARMA_CDLC: "${ARMA_CDLC}"
+      ARMA_CONFIG: "${ARMA_CONFIG}"
+      ARMA_LIMITFPS: "${ARMA_LIMITFPS}"
+      ARMA_PARAMS: "${ARMA_PARAMS}"
+      ARMA_PROFILE: "${ARMA_PROFILE}"
+      ARMA_WORLD: "${ARMA_WORLD}"
+      HEADLESS_CLIENTS: "${HEADLESS_CLIENTS}"
+      HEADLESS_CLIENTS_PROFILE: "${HEADLESS_CLIENTS_PROFILE}"
+      MODS_LOCAL: "${MODS_LOCAL}"
+      MODS_PRESET: "${MODS_PRESET}"
+      PORT: "${PORT}"
+      STEAM_BRANCH: "${STEAM_BRANCH}"
+      STEAM_BRANCH_PASSWORD: "${STEAM_BRANCH_PASSWORD}"      
+      STEAM_PASSWORD: "${STEAM_PASSWORD}"
+      STEAM_USER: "${STEAM_USER}"
     restart: unless-stopped
