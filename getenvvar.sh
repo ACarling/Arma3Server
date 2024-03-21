@@ -1,0 +1,1 @@
+awk -F= 'BEGIN{print "    environment: "}{print "      "$1": \"${"$1"}\""}' .env
