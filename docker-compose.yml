@@ -5,7 +5,7 @@ services:
     image: ghcr.io/brettmayson/arma3server/arma3server:latest
     platform: linux/amd64
     # container_name: ${CONTAINER_NAME}
-    network_mode: ${NETWORK_MODE}
+    network_mode: host
     volumes:
       - './missions:/arma3/mpmissions'
       - './configs:/arma3/configs'
