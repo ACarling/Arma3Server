@@ -8,7 +8,7 @@ services:
     network_mode: host
     volumes:
       - './missions:/arma3/mpmissions'
-      - './configs:'
+      - './configs:${CONFIG_VOLUME}'
       - './mods:/arma3/mods'
       - './servermods:/arma3/servermods'
       - './dlc/jets:/arma3/jets'
