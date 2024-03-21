@@ -4,21 +4,21 @@ services:
     build: .
     image: ghcr.io/brettmayson/arma3server/arma3server:latest
     platform: linux/amd64
-    container_name: ${CONTAINER_NAME}
+    # container_name: ${CONTAINER_NAME}
     network_mode: ${NETWORK_MODE}
     volumes:
-      - './arma3/missions:/arma3/mpmissions'
-      - './arma3/configs:/arma3/configs'
+      - 'arma_missions:/arma3/mpmissions'
+      - 'arma_config:/arma3/configs'
       - './arma3/mods:/arma3/mods'
       - './arma3/servermods:/arma3/servermods'
     
-      - './dlc/jets:/arma3/addons'
-      - './dlc/jets:/arma3/jets'
-      - './dlc/addons:/arma3/addons'
-      - './dlc/heli:/arma3/heli'
-      - './dlc/orange:/arma3/orange'
-      - './dlc/argo:/arma3/argo'
-      - './dlc/enoch:/arma3/enoch'
+      - './arma3/addons:/arma3/addons'
+      - './arma3/jets:/arma3/jets'
+      - './arma3/expansion:/arma3/expansion'
+      - './arma3/heli:/arma3/heli'
+      - './arma3/orange:/arma3/orange'
+      - './arma3/argo:/arma3/argo'
+      - './arma3/enoch:/arma3/enoch'
     environment:
       ARMA_BINARY: "${ARMA_BINARY}"
       ARMA_CDLC: "${ARMA_CDLC}"
