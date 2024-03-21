@@ -7,8 +7,8 @@ services:
     # container_name: ${CONTAINER_NAME}
     network_mode: ${NETWORK_MODE}
     volumes:
-      - 'arma_missions:/arma3/mpmissions'
-      - 'arma_config:/arma3/configs'
+      - './missions:/arma3/mpmissions'
+      - './configs:/arma3/configs'
       - './arma3/mods:/arma3/mods'
       - './arma3/servermods:/arma3/servermods'
     
