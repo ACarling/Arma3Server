@@ -7,15 +7,10 @@ services:
     container_name: arma3
     network_mode: host
     volumes:
-      - './dlc/jets:/arma3/addons'
+      - './missions:/arma3/mpmissions'
+      - './configs:/arma3/configs'
       - './mods:/arma3/mods'
       - './servermods:/arma3/servermods'
-      - './dlc/jets:/arma3/jets'
-      - './dlc/addons:/arma3/addons'
-      - './dlc/heli:/arma3/heli'
-      - './dlc/orange:/arma3/orange'
-      - './dlc/argo:/arma3/argo'
-      - './dlc/enoch:/arma3/enoch'
     environment:
       ARMA_BINARY: "${ARMA_BINARY}"
       ARMA_CDLC: "${ARMA_CDLC}"
