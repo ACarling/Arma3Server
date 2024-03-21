@@ -7,8 +7,7 @@ services:
     container_name: arma3
     network_mode: host
     volumes:
-      - './missions:/arma3/mpmissions'
-      - './configs:${CONFIG_VOLUME}'
+      - './dlc/jets:/arma3/addons'
       - './mods:/arma3/mods'
       - './servermods:/arma3/servermods'
       - './dlc/jets:/arma3/jets'
