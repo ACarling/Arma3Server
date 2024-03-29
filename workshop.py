@@ -10,9 +10,7 @@ USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 
 
 # check keys through download - if no key found retry up to maxretries (1000 or something high)
 def download(mods):
-    #retries=os.environ["MAX_RETRIES"]
-
-    steamcmd = [os.environ["STEAMCMDDIR"] + "/steamcmd.sh"]
+    steamcmd = ["/steamcmd/steamcmd.sh"]
     steamcmd.extend(["+force_install_dir", "/arma3"])
     steamcmd.extend(["+login", os.environ["STEAM_USER"]])
         
@@ -25,8 +23,6 @@ def download(mods):
     while res != 0:
         res = subprocess.call(steamcmd)
         subprocess.call(["/bin/cp","-a","/arma3/steamapps/workshop/downloads/107410/.","/arma3/steamapps/workshop/content/107410/"])
-
-
 
 
 def preset(mod_file):
