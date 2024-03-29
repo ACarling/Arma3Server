@@ -2,6 +2,9 @@
 
 An Arma 3 Dedicated Server. Updates to the latest version every time it is restarted.
 
+info on pushing to registry:
+https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+
 ## Usage
 
 ### Docker CLI
