@@ -23,7 +23,7 @@ def download(mods):
 
 
     for id in mods:
-        for r in retries:
+        for r in range(retries):
             steamcmd.extend(["+workshop_download_item", "107410", id, "validate"])
 
     steamcmd.extend(["+quit"])
