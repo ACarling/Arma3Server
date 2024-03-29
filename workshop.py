@@ -8,25 +8,25 @@ import keys
 WORKSHOP = "steamapps/workshop/content/107410/"
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36"  # noqa: E501
 
-
+# check keys through download - if no key found retry up to maxretries (1000 or something high)
 def download(mods):
-    retries=os.environ["NUM_RETRYS"]
+    #retries=os.environ["MAX_RETRIES"]
 
-    if retries == "" or not retries.isdigit():
-        retries=1
-    else:
-        retries = max(min(int(retries), 50), 0)
-
+    steamcmd = [os.environ["STEAMCMDDIR"] + "/steamcmd.sh"]
+    steamcmd.extend(["+force_install_dir", "/arma3"])
+    steamcmd.extend(["+login", os.environ["STEAM_USER"]])
+        
     for id in mods:
-        steamcmd = ["/steamcmd/steamcmd.sh"]
-        steamcmd.extend(["+force_install_dir", "/arma3"])
-        steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])    
-            
-        for r in range(retries):
-            steamcmd.extend(["+workshop_download_item", "107410", id, "validate"])
+        steamcmd.extend(["+workshop_download_item", "107410", id])
+        steamcmd.extend(["validate"])
 
-        steamcmd.extend(["+quit"])
-        subprocess.call(steamcmd)
+    steamcmd.extend(["+quit"])
+    res = ""
+    while res != 0:
+        res = subprocess.call(steamcmd)
+        subprocess.call(["/bin/cp","-a","/arma3/steamapps/workshop/downloads/107410/.","/arma3/steamapps/workshop/content/107410/"])
+
+
 
 
 def preset(mod_file):
