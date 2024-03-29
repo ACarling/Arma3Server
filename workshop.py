@@ -10,24 +10,23 @@ USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 
 
 
 def download(mods):
-    steamcmd = ["/steamcmd/steamcmd.sh"]
-    steamcmd.extend(["+force_install_dir", "/arma3"])
-    steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])
-    
     retries=os.environ["NUM_RETRYS"]
-    
+
     if retries == "" or not retries.isdigit():
         retries=1
     else:
-        retries = max(min(int(retries), 10), 0)
-
+        retries = max(min(int(retries), 50), 0)
 
     for id in mods:
+        steamcmd = ["/steamcmd/steamcmd.sh"]
+        steamcmd.extend(["+force_install_dir", "/arma3"])
+        steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])    
+            
         for r in range(retries):
             steamcmd.extend(["+workshop_download_item", "107410", id, "validate"])
 
-    steamcmd.extend(["+quit"])
-    subprocess.call(steamcmd)
+        steamcmd.extend(["+quit"])
+        subprocess.call(steamcmd)
 
 
 def preset(mod_file):
