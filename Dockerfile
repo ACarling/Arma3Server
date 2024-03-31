@@ -8,12 +8,12 @@ RUN apt-get update \
     && \
     apt-get install -y --no-install-recommends --no-install-suggests \
         python3 \
+        rename \
         lib32stdc++6 \
         lib32gcc-s1 \
         libcurl4 \
         wget \
         ca-certificates \
-        rename \
     && \
     apt-get remove --purge -y \
     && \
