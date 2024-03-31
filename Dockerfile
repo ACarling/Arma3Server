@@ -4,9 +4,9 @@ LABEL maintainer="Brett - github.com/brettmayson"
 LABEL org.opencontainers.image.source=https://github.com/brettmayson/arma3server
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN apt-get update \
+RUN apt update \
     && \
-    apt-get install -y --no-install-recommends --no-install-suggests \
+    apt install -y --no-install-recommends --no-install-suggests \
         python3 \
         rename \
         lib32stdc++6 \
@@ -15,11 +15,11 @@ RUN apt-get update \
         wget \
         ca-certificates \
     && \
-    apt-get remove --purge -y \
+    apt remove --purge -y \
     && \
-    apt-get clean autoclean \
+    apt clean autoclean \
     && \
-    apt-get autoremove -y \
+    apt autoremove -y \
     && \
     rm -rf /var/lib/apt/lists/* \
     && \
