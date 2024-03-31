@@ -45,6 +45,8 @@ def downloadMod(ids):
         else:
             timeout = 600
         subprocess.run(steamcmd, timeout=timeout, check=True)
+        subprocess.run(["sh", "/renameLowercase.sh"], check=True)
+
 
 
 
@@ -81,6 +83,6 @@ def preset(mod_file):
     #sp.extend(["find", "/arma3/steamapps/workshop/content/107410/", "-depth" "|", "xargs", "-n", "1", "rename", '-v', 's/(.*)\/([^\/]*)/$1\/\L$2/'])
     #sp.extend(["./renameLowercase.sh"])
     #find /home/aidan/Documents/tst/ -depth | xargs -n 1 rename -v 's/(.*)\/([^\/]*)/$1\/\L$2/'
-
     subprocess.run(["sh", "/renameLowercase.sh"], check=True)
+
     return moddirs
