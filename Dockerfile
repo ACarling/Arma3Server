@@ -66,6 +66,6 @@ STOPSIGNAL SIGINT
 
 COPY *.py /
 COPY renameLowercase.sh /
-RUN chmod +x renameLowercase.sh
+RUN chmod +x /renameLowercase.sh
 
 CMD ["python3","/launch.py"]
