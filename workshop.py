@@ -75,4 +75,7 @@ def preset(mod_file):
         downloadMod(mods)
         for moddir in moddirs:
             keys.copy(moddir)
+
+    # change everything to lowercase
+    subprocess.run(["cd", "/arma3/steamapps/workshop/content/107410/", "&&", "find", ".", "-depth", "-exec", "rename", "\'s/(.*)\/([^\/]*)/$1\/\L$2/\'", "{}" , "\\;"], check=True)
     return moddirs
