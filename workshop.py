@@ -76,13 +76,8 @@ def preset(mod_file):
         for moddir in moddirs:
             keys.copy(moddir)
 
-    # change everything to lowercase
     sp=[]
-    #sp.extend(["cd", "/arma3/steamapps/workshop/content/107410/", "&&"])
-
-#find . -depth -exec rename 's/(.*)\/([^\/]*)/$1\/\L$2/' {} \;
-
-    sp.extend(["find", ".", "-depth", "-exec", "rename", r"'s/(.*)\/([^\/]*)/$1\/\L$2/'", "{}", r"/arma3/steamapps/workshop/content/107410/"])
+    sp.extend(["find", "/arma3/steamapps/workshop/content/107410/", "-depth", "-exec", "rename", 's/(.*)\/([^\/]*)/$1\/\L$2/', "{}", "/"])
 
 
 
