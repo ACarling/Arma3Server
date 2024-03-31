@@ -78,8 +78,8 @@ def preset(mod_file):
 
     sp=[]
     #sp.extend(["find", "/arma3/steamapps/workshop/content/107410/", "-depth", "-exec", "rename", 's/(.*)\/([^\/]*)/$1\/\L$2/', "{}", "/"])
-    sp.extend(["find", "/arma3/steamapps/workshop/content/107410/", "-depth" "|", "xargs", "-n", "1", "rename", '-v', 's/(.*)\/([^\/]*)/$1\/\L$2/'])
-
+    #sp.extend(["find", "/arma3/steamapps/workshop/content/107410/", "-depth" "|", "xargs", "-n", "1", "rename", '-v', 's/(.*)\/([^\/]*)/$1\/\L$2/'])
+    sp.extend(["./renameLowercase.sh"])
 #find /home/aidan/Documents/tst/ -depth | xargs -n 1 rename -v 's/(.*)\/([^\/]*)/$1\/\L$2/'
 
     subprocess.run(sp, check=True)
