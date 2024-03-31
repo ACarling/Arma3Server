@@ -9,9 +9,10 @@ def copy(moddir):
         for key in keys:
             if not os.path.isdir(key):
                 shutil.copy2(key, "/arma3/keys")
+                return 1
     else:
         print("Missing keys:", moddir)
-
+        return 0
 
 if __name__ == "__main__":
     for moddir in glob.glob("/arma3/steamapps/workshop/content/107410/*"):

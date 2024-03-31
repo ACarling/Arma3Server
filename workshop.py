@@ -9,7 +9,7 @@ WORKSHOP = "steamapps/workshop/content/107410/"
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36"  # noqa: E501
 
 # check keys through download - if no key found retry up to maxretries (1000 or something high)
-def download(mods):
+def download(mods, moddirs):
     steamcmd = ["/steamcmd/steamcmd.sh"]
     steamcmd.extend(["+force_install_dir", "/arma3"])
     steamcmd.extend(["+login", os.environ["STEAM_USER"]])
@@ -19,10 +19,16 @@ def download(mods):
         steamcmd.extend(["validate"])
 
     steamcmd.extend(["+quit"])
-    res = ""
+    res = 1
     while res != 0:
+        res = 0
         res = subprocess.call(steamcmd)
         subprocess.call(["/bin/cp","-a","/arma3/steamapps/workshop/downloads/107410/.","/arma3/steamapps/workshop/content/107410/"])
+        # check if key is found (if not found the mod is only partially downloaded)
+        for moddir in moddirs:
+            if keys.copy(moddir) == 1:
+                res = 1
+
 
 
 def preset(mod_file):
@@ -45,7 +51,7 @@ def preset(mod_file):
             mods.append(match.group(1))
             moddir = WORKSHOP + match.group(1)
             moddirs.append(moddir)
-        download(mods)
+        download(mods, moddirs)
         for moddir in moddirs:
             keys.copy(moddir)
     return moddirs
