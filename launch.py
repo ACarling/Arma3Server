@@ -62,11 +62,12 @@ if env_defined("STEAM_ADDITIONAL_DEPOT"):
 
 mods = []
 
+if os.environ["MODS_LOCAL"] == "true" and os.path.exists("mods"):
+    mods.extend(local.mods("mods"))
+
 if os.environ["MODS_PRESET"] != "":
     mods.extend(workshop.preset(os.environ["MODS_PRESET"]))
 
-if os.environ["MODS_LOCAL"] == "true" and os.path.exists("mods"):
-    mods.extend(local.mods("mods"))
 
 launch = "{} -limitFPS={} -world={} {} {}".format(
     os.environ["ARMA_BINARY"],
