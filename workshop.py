@@ -21,6 +21,7 @@ def download(mods):
     steamcmd.extend(["+quit"])
     res = ""
     while res != 0:
+        subprocess.run(["sh", "/renameLowercase.sh"], check=True)
         res = subprocess.call(steamcmd)
         subprocess.call(["/bin/cp","-a","/arma3/steamapps/workshop/downloads/107410/.","/arma3/steamapps/workshop/content/107410/"])
 
@@ -74,7 +75,7 @@ def preset(mod_file):
             mods.append(match.group(1))
             moddir = WORKSHOP + match.group(1)
             moddirs.append(moddir)
-        downloadMod(mods)
+        download(mods)
         for moddir in moddirs:
             keys.copy(moddir)
 
