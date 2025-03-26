@@ -847,5 +847,5 @@
           "bind": "/var/run/docker.sock"
         }
       ]
-    }
+    },
 ]
